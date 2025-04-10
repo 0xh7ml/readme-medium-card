@@ -120,7 +120,7 @@ def preview_card_svg():
                     width: 100%;
                     height: 100%;
                     min-height: {card_height}px;
-                    background: url(#contentGradient);
+                    background: linear-gradient(135deg, #db2777 0%, #7c3aed 100%);
                     background-size: 200% 200%;
                     animation: gradientShift 6s ease infinite;
                     border-radius: 12px;
@@ -196,7 +196,7 @@ def preview_card_svg():
         </div>
     </foreignObject>
 </svg>
-    """)
+""")
 
     # Return SVG response
     return Response(''.join(svg_content), mimetype='image/svg+xml')
