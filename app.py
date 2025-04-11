@@ -94,27 +94,7 @@ def preview_card_svg():
     svg_content = []
 
     svg_content.append(f"""
-<svg id="visual" viewBox="0 0 800 {card_height}" width="800" height="{card_height}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-    <defs>
-        <filter id="blur1" x="-10%" y="-10%" width="120%" height="120%">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-            <feGaussianBlur stdDeviation="53" result="effect1_foregroundBlur"></feGaussianBlur>
-        </filter>
-        <linearGradient id="contentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#db2777;stop-opacity:0.8"/> <!-- Pinkish -->
-            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.8"/> <!-- Purple -->
-        </linearGradient>
-    </defs>
-    <rect width="800" height="{card_height}" fill="#F7CACA"></rect>
-    <g filter="url(#blur1)">
-        <circle cx="419" cy="24" fill="#001122" r="357"></circle>
-        <circle cx="24" cy="22" fill="#715DF2" r="357"></circle>
-        <circle cx="700" cy="310" fill="#001122" r="357"></circle>
-        <circle cx="566" cy="547" fill="#001122" r="357"></circle>
-        <circle cx="174" cy="554" fill="#715DF2" r="357"></circle>
-        <circle cx="322" cy="368" fill="#001122" r="357"></circle>
-    </g>
+<svg fill="none" width="100%" height="100%" viewBox="0 0 1000 140" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
     <foreignObject width="100%" height="100%">
         <div xmlns="http://www.w3.org/1999/xhtml">
             <style>
@@ -122,88 +102,84 @@ def preview_card_svg():
                     margin: 0;
                     padding: 0;
                     box-sizing: border-box;
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    font-family: sans-serif;
                 }}
-                @keyframes gradientShift {{
-                    0% {{ background-position: 0% 50%; }}
-                    50% {{ background-position: 100% 50%; }}
-                    100% {{ background-position: 0% 50%; }}
+                @keyframes gradientBackground {{
+                    0% {{
+                        background-position-x: 0%;
+                    }}
+                    100% {{
+                        background-position-x: 100%;
+                    }}
                 }}
-                .container {{
+                .flex {{
                     display: flex;
+                    align-items: center;
                     width: 100%;
                     height: 100%;
-                    min-height: {card_height}px;
-                    background: linear-gradient(135deg, #db2777 0%, #7c3aed 100%);
-                    background-size: 200% 200%;
-                    animation: gradientShift 6s ease infinite;
-                    border-radius: 12px;
-                    margin: 10px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                    overflow: hidden;
                 }}
-                .thumbnail {{
-                    width: 200px;
+                .outer-container {{
+                    width: 100%;
                     height: 100%;
-                    object-fit: cover;
-                    border-right: 1px solid rgba(255,255,255,0.2);
+                    min-height: 140px;
                 }}
-                .content {{
+                .container {{
+                    height: 100%;
+                    width: 100%;
+                    border: 1px solid rgba(0,0,0,.2);
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    background: rgb(255,255,255);
+                    background: linear-gradient(60deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 47%, rgba(246,246,246,1) 50%, rgba(255,255,255,1) 53%, rgba(255,255,255,1) 100%);
+                    background-size: 600% 400%;
+                    animation: gradientBackground 3s ease infinite;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }}
+                img {{
+                    margin-right: 10px;
+                    width: 150px;
+                    height: 100%;
+                    min-height: 98px; /* 140px - 2 * 10px padding - 2 * 1px border */
+                    object-fit: cover;
+                }}
+                .right {{
                     flex: 1;
-                    padding: 15px;
-                    color: #ffffff;
+                    min-width: 0; /* This helps with text overflow */
                 }}
                 a {{
                     text-decoration: none;
                     color: inherit;
-                    display: flex;
-                    width: 100%;
-                    height: 100%;
-                }}
-                h3 {{
-                    font-size: 18px;
-                    font-weight: 600;
-                    margin-bottom: 8px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                }}
-                .date {{
-                    font-size: 14px;
-                    opacity: 0.8;
-                    margin-bottom: 10px;
-                    display: block;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
                 }}
                 p {{
-                    font-size: 16px;
-                    line-height: 1.4;
-                    opacity: 0.9;
+                    line-height: 1.5;
+                    color: #555;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     display: -webkit-box;
-                    -webkit-line-clamp: 3;
+                    -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                 }}
-                .categories {{
-                    font-size: 16px;
-                    opacity: 0.8;
-                    margin-bottom: 12px;
-                    display: block;
+                h3 {{
+                    color: #333;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
                 }}
+                small {{
+                    color: #888;
+                    display: block;
+                    margin-top: 5px;
+                    margin-bottom: 8px;
+                }}
             </style>
-            <div class="outer-container">
-                <a class="container" href="{html.escape(article['link'])}" target="_blank">
-                    <img class="thumbnail" src="{html.escape(article['thumbnail'] or 'https://via.placeholder.com/200')}" alt="Thumbnail"/>
-                    <div class="content">
+            <div class="outer-container flex">
+                <a class="container flex" href="{html.escape(article['link'])}" target="__blank">
+                    <img src="{html.escape(article['thumbnail'] or 'https://via.placeholder.com/150')}" alt="Thumbnail"/>
+                    <div class="right">
                         <h3>{html.escape(article['title'])}</h3>
-                        <span class="date">{html.escape(article['published'])}</span>
-                        <span class="categories">{html.escape(article['categories'])}</span>
+                        <small>{html.escape(article['published'])}</small>
+                        <p>{html.escape(article['categories'])}</p>
                     </div>
                 </a>
             </div>
