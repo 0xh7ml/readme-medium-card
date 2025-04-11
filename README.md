@@ -4,7 +4,7 @@
 # Readme Medium Card
 ![Awesome Medium Card](https://img.shields.io/badge/Awesome-Medium%20Card-blueviolet?style=flat-square)
 
-Generate stylish SVG cards for your **Medium** articles to showcase in your **GitHub** README, featuring a blurred-circle design, middle content previews, and categories.
+Generate stylish SVG cards for your **Medium** articles to showcase in your **GitHub** README, featuring title, publish date, and categories.
 
 </center>
 
@@ -15,5 +15,5 @@ Readme Medium Card is a Flask-based tool that fetches your **Medium** articles v
 ## Usage
 
 ```markdown
-![First Article](https://medium-card.itsaikat.com/?user=<username>&index=<article_index>)
+![First Article](https://readme-medium-card-theta.vercel.app/?user=<username>&index=<index>)
 ```
