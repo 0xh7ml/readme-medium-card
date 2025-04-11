@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import html2text
 import feedparser
 import html
+import base64
+import requests
+from io import BytesIO
 
 app = Flask(__name__)
 
@@ -56,6 +59,7 @@ def preview_card_svg():
             thumbnail = img.get('src', '') if img else ''
     except Exception:
         thumbnail = ''
+    
     # Extract categories and format as hashtags
     categories = entry.get('tags', [])
     if categories:
@@ -67,10 +71,21 @@ def preview_card_svg():
     else:
         category_string = ''
     
+    # Convert thumbnail to base64
+    thumbnail_base64 = ''
+    if thumbnail:
+        try:
+            response = requests.get(thumbnail)
+            if response.status_code == 200:
+                image_data = BytesIO(response.content)
+                thumbnail_base64 = f"data:image/jpeg;base64,{base64.b64encode(image_data.read()).decode('utf-8')}"
+        except Exception:
+            thumbnail_base64 = ''
+
     article = {
         "title": entry.title[:50] + "..." if len(entry.title) > 50 else entry.title,
         "link": entry.link,
-        "thumbnail": thumbnail,
+        "thumbnail": thumbnail_base64,
         "published": ' '.join(entry.get('published', '').split()[:4]),
         "categories": category_string
     }
