@@ -200,7 +200,7 @@ def preview_card_svg():
             </style>
             <div class="outer-container">
                 <a class="container" href="{html.escape(article['link'])}" target="_blank">
-                    <img class="thumbnail" src="{html.escape(article['thumbnail'] or 'https://via.placeholder.com/200')}" alt="Thumbnail"/>
+                    <img class="thumbnail" src="{article['thumbnail'] or 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAABF2ixuAAAAAElFTkSuQmCC'}" alt="Thumbnail"/>
                     <div class="content">
                         <h3>{html.escape(article['title'])}</h3>
                         <span class="date">{html.escape(article['published'])}</span>
