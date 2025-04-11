@@ -1,12 +1,14 @@
-<center>
+<div align="center">
 
 ![Demo](./public/demo.png)
+
 # Readme Medium Card
+
 ![Awesome Medium Card](https://img.shields.io/badge/Awesome-Medium%20Card-blueviolet?style=flat-square)
 
 Generate stylish SVG cards for your **Medium** articles to showcase in your **GitHub** README, featuring title, publish date, and categories.
 
-</center>
+</div>
 
 ## Overview
 
