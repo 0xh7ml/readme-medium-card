@@ -59,7 +59,6 @@ def preview_card_svg():
             thumbnail = img.get('src', '') if img else ''
     except Exception:
         thumbnail = ''
-    
     # Extract categories and format as hashtags
     categories = entry.get('tags', [])
     if categories:
@@ -200,7 +199,7 @@ def preview_card_svg():
             </style>
             <div class="outer-container">
                 <a class="container" href="{html.escape(article['link'])}" target="_blank">
-                    <img class="thumbnail" src="{article['thumbnail'] or 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAABF2ixuAAAAAElFTkSuQmCC'}" alt="Thumbnail"/>
+                    <img class="thumbnail" src="{{article['thumbnail'] or 'https://via.placeholder.com/200')}}" alt="Thumbnail"/>
                     <div class="content">
                         <h3>{html.escape(article['title'])}</h3>
                         <span class="date">{html.escape(article['published'])}</span>
