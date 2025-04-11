@@ -1,5 +1,6 @@
 <center>
 
+![Demo](./public/demo.png)
 # Readme Medium Card
 ![Awesome Medium Card](https://img.shields.io/badge/Awesome-Medium%20Card-blueviolet?style=flat-square)
 
@@ -14,7 +15,5 @@ Readme Medium Card is a Flask-based tool that fetches your **Medium** articles v
 ## Usage
 
 ```markdown
-![Latest Article](https://medium-card.itsaikat.com/?user=0xh7ml&index=0)
-
-![Second Article](https://medium-card.itsaikat.com/?user=0xh7ml&index=1)
+![First Article](https://medium-card.itsaikat.com/?user=<username>&index=<article_index>)
 ```
